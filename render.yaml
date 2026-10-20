@@ -2,7 +2,7 @@
 # POST /api/upload returns, because the agent runs in a background thread.
 services:
   - type: web
-    name: stet
+    name: stet-ai-analyst
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
