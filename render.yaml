@@ -1,0 +1,37 @@
+# Render Blueprint for the public demo. The process must stay alive after
+# POST /api/upload returns, because the agent runs in a background thread.
+services:
+  - type: web
+    name: stet
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python serve.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: HOST
+        value: 0.0.0.0
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: MODEL_PROVIDER
+        value: gemini
+      - key: MODEL_API_URL
+        value: https://generativelanguage.googleapis.com/v1beta/openai/
+      - key: MODEL_NAME
+        value: gemini-3.5-flash-lite
+      - key: MODEL_REASONING_EFFORT
+        value: minimal
+      - key: MODEL_MIN_INTERVAL_SECONDS
+        value: "7"
+      - key: PUBLIC_TASK_TIMEOUT_SECONDS
+        value: "180"
+      - key: OWNER_DAILY_LIMIT
+        value: "20"
+      - key: OWNER_COOLDOWN_SECONDS
+        value: "60"
+      - key: BYOK_CONCURRENCY
+        value: "2"
+      - key: MODEL_API_KEY
+        sync: false
