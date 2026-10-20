@@ -1,0 +1,5 @@
+{
+  "task_id": "csv_totals",
+  "difficulty": "easy",
+  "question": "What is the total amount for each region? Include only the region and its total amount."
+}

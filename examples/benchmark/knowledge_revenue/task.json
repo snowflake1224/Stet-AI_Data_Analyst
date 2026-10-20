@@ -1,0 +1,5 @@
+{
+  "task_id": "knowledge_revenue",
+  "difficulty": "medium",
+  "question": "Using the definition of net revenue in knowledge.md, what is the total net revenue for each region? Include only the region and its net revenue."
+}

@@ -1,0 +1,5 @@
+{
+  "task_id": "excel_revenue",
+  "difficulty": "easy",
+  "question": "Using the prices sheet and the qty sheet in report.xlsx, what is the revenue for each item, where revenue is price times quantity? Include only the item and its revenue."
+}

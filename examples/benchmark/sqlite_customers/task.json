@@ -1,0 +1,5 @@
+{
+  "task_id": "sqlite_customers",
+  "difficulty": "medium",
+  "question": "What is the total order amount for each customer name? Include only the customer name and the total amount."
+}
