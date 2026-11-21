@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-label="Stet AI Data Analyst System Architecture">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#111a34"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <style>
+      .t { font: 700 20px 'Inter', 'Segoe UI', system-ui, sans-serif; fill: #f8fafc; }
+      .s { font: 400 12px 'Inter', 'Segoe UI', system-ui, sans-serif; fill: #94a3b8; }
+      .zone { fill: #131c36; stroke: #293b66; stroke-width: 1.5; rx: 14; }
+      .zl { font: 700 11px 'Inter', 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.08em; fill: #34d399; text-transform: uppercase; }
+      .box { fill: #1b284c; stroke: #3b82f6; stroke-width: 1.3; rx: 10; }
+      .box-sec { fill: #132c37; stroke: #10b981; stroke-width: 1.4; rx: 10; }
+      .box-warn { fill: #242142; stroke: #f59e0b; stroke-width: 1.3; rx: 10; }
+      .bt { font: 600 13px 'Inter', 'Segoe UI', system-ui, sans-serif; fill: #f1f5f9; }
+      .bs { font: 400 11px 'JetBrains Mono', monospace; fill: #94a3b8; }
+      .e { stroke: #34d399; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+      .ed { stroke: #f59e0b; stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; marker-end: url(#arr); }
+    </style>
+  </defs>
+
+  <rect width="1120" height="620" fill="url(#bg)"/>
+  <text x="34" y="40" class="t">Stet  Planner-Executor-Verifier AI Data Analyst Architecture</text>
+  <text x="34" y="60" class="s">Folder-In Table-Out Analytics · Dual Trust Tiers (Public BYOK Demo vs Full Local/KDD Batch) · Column-Penalty Benchmark Scoring</text>
+
+  <!-- Layer 1 -->
+  <rect x="34" y="84" width="1052" height="120" class="zone"/>
+  <text x="50" y="106" class="zl">1. Entry Modes &amp; Admission Controls</text>
+  <rect x="52" y="120" width="330" height="66" class="box"/>
+  <text x="68" y="142" class="bt">Public Demo Server (serve.py :8765)</text>
+  <text x="68" y="159" class="bs">Owner example (cooldown/daily cap) +</text>
+  <text x="68" y="175" class="bs">BYOK RAM-only key · &lt;=3 CSV + &lt;=1 MD</text>
+
+  <rect x="404" y="120" width="320" height="66" class="box"/>
+  <text x="420" y="142" class="bt">Local CLI &amp; KDD Batch (ask.py / main.py)</text>
+  <text x="420" y="159" class="bs">Trusted folder runner · ThreadPoolExecutor</text>
+  <text x="420" y="175" class="bs">outputs predictions/&lt;id&gt;/prediction.csv</text>
+
+  <rect x="746" y="120" width="322" height="66" class="box-warn"/>
+  <text x="762" y="142" class="bt">Multi-Provider ModelClient</text>
+  <text x="762" y="159" class="bs">Gemini (paced) / OpenAI auto-select</text>
+  <text x="762" y="175" class="bs">Retry-After · secret redaction in errors</text>
+
+  <!-- Layer 2 -->
+  <rect x="34" y="230" width="1052" height="136" class="zone"/>
+  <text x="50" y="252" class="zl">2. Three-Phase DataAgent Loop (agent.py)</text>
+  <rect x="52" y="268" width="318" height="80" class="box"/>
+  <text x="68" y="290" class="bt">Phase 1  Planner (_plan)</text>
+  <text x="68" y="308" class="bs">Reads file tree + question -&gt; JSON plan</text>
+  <text x="68" y="325" class="bs">Auto-injects knowledge.md (&lt;= 8 KB)</text>
+  <text x="68" y="341" class="bs">Labels uploaded context as untrusted data</text>
+
+  <rect x="398" y="268" width="340" height="80" class="box-sec"/>
+  <text x="414" y="290" class="bt">Phase 2  ReAct Executor (_execute)</text>
+  <text x="414" y="308" class="bs">Strict role-alternating _trim_history</text>
+  <text x="414" y="325" class="bs">JSON fence + Qwen &lt;think&gt; strip &amp; repair</text>
+  <text x="414" y="341" class="bs">2-stage step warn + final forced answer</text>
+
+  <rect x="766" y="268" width="302" height="80" class="box"/>
+  <text x="782" y="290" class="bt">Phase 3  Verifier (_verify)</text>
+  <text x="782" y="308" class="bs">Inspects question vs produced columns</text>
+  <text x="782" y="325" class="bs">Drops unrequested extra columns</text>
+  <text x="782" y="341" class="bs">Guards against dropping all columns</text>
+
+  <!-- Layer 3 -->
+  <rect x="34" y="392" width="1052" height="196" class="zone"/>
+  <text x="50" y="414" class="zl">3. Trust Boundaries, Tool Sandbox &amp; Evaluation Harness</text>
+  <rect x="52" y="430" width="485" height="140" class="box-sec"/>
+  <text x="68" y="452" class="bt">Public Allowlist Tools (for_public_upload)</text>
+  <text x="68" y="472" class="bs">" list_context · read_csv · read_doc · search_doc · answer</text>
+  <text x="68" y="492" class="bs">" query_tables: loads uploaded CSVs into :memory: SQLite</text>
+  <text x="68" y="510" class="bs">  with typed schema inference, single-SELECT/WITH check,</text>
+  <text x="68" y="528" class="bs">  PRAGMA query_only=ON, progress interrupt (10k ops)</text>
+  <text x="68" y="550" class="bs">" Temp dir wiped on finish · CSP + X-Content-Type headers</text>
+
+  <rect x="562" y="430" width="506" height="64" class="box-warn"/>
+  <text x="578" y="452" class="bt">Extended Trusted Local/Batch Tools (ask.py / main.py)</text>
+  <text x="578" y="470" class="bs">run_python (pandas/numpy) · read_excel · read_pdf · grep</text>
+  <text x="578" y="485" class="bs">inspect_db · execute_sql · analyze_image (vision)</text>
+
+  <rect x="562" y="506" width="506" height="64" class="box"/>
+  <text x="578" y="528" class="bt">KDD Column-Set Benchmark Scorer (eval/score.py)</text>
+  <text x="578" y="546" class="bs">4 gold fixtures (CSV · SQLite · Markdown · Excel 2-sheet)</text>
+  <text x="578" y="561" class="bs">score = recall - lambda * (extra_cols / predicted_cols)</text>
+
+  <!-- Edges -->
+  <path d="M 217 186 L 217 268" class="e"/>
+  <path d="M 564 186 L 260 268" class="e"/>
+  <path d="M 907 186 L 568 268" class="ed"/>
+  <path d="M 370 308 L 398 308" class="e"/>
+  <path d="M 738 308 L 766 308" class="e"/>
+  <path d="M 568 348 L 300 430" class="e"/>
+  <path d="M 620 348 L 815 430" class="ed"/>
+  <path d="M 917 348 L 815 506" class="e"/>
+</svg>

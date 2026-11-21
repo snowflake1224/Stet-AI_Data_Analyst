@@ -40,24 +40,18 @@ Limits are intentionally small: 500 KB per file, 1.5 MB total, 3 CSV files, 1 Ma
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  visitor[Visitor] --> webApp[Demo page]
-  webApp --> exampleMode[Curated example]
-  webApp --> uploadMode[CSV and Markdown]
-  exampleMode --> ownerGemini[Owner Gemini key]
-  uploadMode --> visitorKey[Temporary visitor key]
-  ownerGemini --> agent[Planner executor verifier]
-  visitorKey --> agent
-  agent --> safeTools[Read search and table query]
-  safeTools --> result[Verified table and CSV]
-```
+![Stet Architecture](docs/diagrams/architecture.svg)
+![Planner Executor Verifier Pipeline](docs/diagrams/planner-executor-verifier.svg)
 
 1. The planner sees the question and file tree and returns a short JSON plan.
 2. The executor calls one allowed tool per step. Observations are truncated and old turns are trimmed.
 3. The verifier removes columns the question did not request.
 
 The browser displays only high-level tool progress, not chain-of-thought, raw prompts, secrets, or stack traces.
+
+Deep-dive docs:
+- [Architecture & System Design](docs/architecture.md)
+- [Architecture Interview Guide](docs/interview-guide.md)
 
 ## Deployment
 

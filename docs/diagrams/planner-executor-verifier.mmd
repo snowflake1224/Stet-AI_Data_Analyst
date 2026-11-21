@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant U as Visitor / CLI
+    participant S as serve.py / DataAgent
+    participant M as ModelClient (Gemini/OpenAI)
+    participant T as Tools / :memory: SQLite
+
+    U->>S: Question + CSV/MD context
+    S->>M: Phase 1 Plan prompt (tree + difficulty)
+    M-->>S: Structured JSON plan
+    loop Steps 1..max_steps (with _trim_history + step warnings)
+        S->>M: Role-alternating history
+        M-->>S: JSON action + action_input
+        S->>T: Policy-gated tool call (safe path / query_only SQLite)
+        T-->>S: Truncated JSON observation
+    end
+    Note over S,T: Terminal action = answer(columns, rows)
+    S->>M: Phase 3 Verifier (check columns vs question)
+    M-->>S: Prune extraneous columns (safe fallback keeps >=1 col)
+    S-->>U: Verified Table + Downloadable CSV
