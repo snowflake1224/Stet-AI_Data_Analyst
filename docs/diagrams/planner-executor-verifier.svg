@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" role="img" aria-label="Stet Three-Phase Execution & Safety Guardrails">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" role="img" aria-label="Stet Three-Phase Execution &amp; Safety Guardrails">
   <defs>
     <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0b1020"/>
@@ -27,21 +27,21 @@
 
   <!-- 3 Phases -->
   <rect x="34" y="92" width="290" height="128" class="b1"/>
-  <text x="52" y="118" class="bt">Phase 1 · Plan</text>
+  <text x="52" y="118" class="bt">Phase 1 &#183; Plan</text>
   <text x="52" y="140" class="bs">" Walks context tree (sizes + types)</text>
   <text x="52" y="160" class="bs">" Single temperature=0 call -&gt; JSON plan</text>
   <text x="52" y="180" class="bs">" Public mode wraps files as untrusted</text>
   <text x="52" y="200" class="bs">" Injects knowledge.md if &lt;= 8 KB</text>
 
   <rect x="394" y="92" width="320" height="128" class="b2"/>
-  <text x="412" y="118" class="bt">Phase 2 · Execute ReAct Loop</text>
+  <text x="412" y="118" class="bt">Phase 2 &#183; Execute ReAct Loop</text>
   <text x="412" y="140" class="bs">" Parses &lt;think&gt; tags + JSON fences</text>
   <text x="412" y="160" class="bs">" History trimmer preserves turn pairs</text>
   <text x="412" y="180" class="bs">" Error-streak hint + two step warnings</text>
   <text x="412" y="200" class="bs">" Final forced answer call on limit</text>
 
   <rect x="784" y="92" width="282" height="128" class="b3"/>
-  <text x="802" y="118" class="bt">Phase 3 · Verify &amp; Prune</text>
+  <text x="802" y="118" class="bt">Phase 3 &#183; Verify &amp; Prune</text>
   <text x="802" y="140" class="bs">" Audits predicted columns vs question</text>
   <text x="802" y="160" class="bs">" Drops extra unrequested columns</text>
   <text x="802" y="180" class="bs">" Prevents KDD extra-column penalty</text>

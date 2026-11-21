@@ -23,8 +23,8 @@
   </defs>
 
   <rect width="1120" height="620" fill="url(#bg)"/>
-  <text x="34" y="40" class="t">Stet  Planner-Executor-Verifier AI Data Analyst Architecture</text>
-  <text x="34" y="60" class="s">Folder-In Table-Out Analytics · Dual Trust Tiers (Public BYOK Demo vs Full Local/KDD Batch) · Column-Penalty Benchmark Scoring</text>
+  <text x="34" y="40" class="t">Stet &#8212; Planner-Executor-Verifier AI Data Analyst Architecture</text>
+  <text x="34" y="60" class="s">Folder-In Table-Out Analytics &#183; Dual Trust Tiers (Public BYOK Demo vs Full Local/KDD Batch) &#183; Column-Penalty Benchmark Scoring</text>
 
   <!-- Layer 1 -->
   <rect x="34" y="84" width="1052" height="120" class="zone"/>
@@ -32,35 +32,35 @@
   <rect x="52" y="120" width="330" height="66" class="box"/>
   <text x="68" y="142" class="bt">Public Demo Server (serve.py :8765)</text>
   <text x="68" y="159" class="bs">Owner example (cooldown/daily cap) +</text>
-  <text x="68" y="175" class="bs">BYOK RAM-only key · &lt;=3 CSV + &lt;=1 MD</text>
+  <text x="68" y="175" class="bs">BYOK RAM-only key &#183; &lt;=3 CSV + &lt;=1 MD</text>
 
   <rect x="404" y="120" width="320" height="66" class="box"/>
   <text x="420" y="142" class="bt">Local CLI &amp; KDD Batch (ask.py / main.py)</text>
-  <text x="420" y="159" class="bs">Trusted folder runner · ThreadPoolExecutor</text>
+  <text x="420" y="159" class="bs">Trusted folder runner &#183; ThreadPoolExecutor</text>
   <text x="420" y="175" class="bs">outputs predictions/&lt;id&gt;/prediction.csv</text>
 
   <rect x="746" y="120" width="322" height="66" class="box-warn"/>
   <text x="762" y="142" class="bt">Multi-Provider ModelClient</text>
   <text x="762" y="159" class="bs">Gemini (paced) / OpenAI auto-select</text>
-  <text x="762" y="175" class="bs">Retry-After · secret redaction in errors</text>
+  <text x="762" y="175" class="bs">Retry-After &#183; secret redaction in errors</text>
 
   <!-- Layer 2 -->
   <rect x="34" y="230" width="1052" height="136" class="zone"/>
   <text x="50" y="252" class="zl">2. Three-Phase DataAgent Loop (agent.py)</text>
   <rect x="52" y="268" width="318" height="80" class="box"/>
-  <text x="68" y="290" class="bt">Phase 1  Planner (_plan)</text>
+  <text x="68" y="290" class="bt">Phase 1 &#8212; Planner (_plan)</text>
   <text x="68" y="308" class="bs">Reads file tree + question -&gt; JSON plan</text>
   <text x="68" y="325" class="bs">Auto-injects knowledge.md (&lt;= 8 KB)</text>
   <text x="68" y="341" class="bs">Labels uploaded context as untrusted data</text>
 
   <rect x="398" y="268" width="340" height="80" class="box-sec"/>
-  <text x="414" y="290" class="bt">Phase 2  ReAct Executor (_execute)</text>
+  <text x="414" y="290" class="bt">Phase 2 &#8212; ReAct Executor (_execute)</text>
   <text x="414" y="308" class="bs">Strict role-alternating _trim_history</text>
   <text x="414" y="325" class="bs">JSON fence + Qwen &lt;think&gt; strip &amp; repair</text>
   <text x="414" y="341" class="bs">2-stage step warn + final forced answer</text>
 
   <rect x="766" y="268" width="302" height="80" class="box"/>
-  <text x="782" y="290" class="bt">Phase 3  Verifier (_verify)</text>
+  <text x="782" y="290" class="bt">Phase 3 &#8212; Verifier (_verify)</text>
   <text x="782" y="308" class="bs">Inspects question vs produced columns</text>
   <text x="782" y="325" class="bs">Drops unrequested extra columns</text>
   <text x="782" y="341" class="bs">Guards against dropping all columns</text>
@@ -70,20 +70,20 @@
   <text x="50" y="414" class="zl">3. Trust Boundaries, Tool Sandbox &amp; Evaluation Harness</text>
   <rect x="52" y="430" width="485" height="140" class="box-sec"/>
   <text x="68" y="452" class="bt">Public Allowlist Tools (for_public_upload)</text>
-  <text x="68" y="472" class="bs">" list_context · read_csv · read_doc · search_doc · answer</text>
-  <text x="68" y="492" class="bs">" query_tables: loads uploaded CSVs into :memory: SQLite</text>
+  <text x="68" y="472" class="bs">&#8226; list_context &#183; read_csv &#183; read_doc &#183; search_doc &#183; answer</text>
+  <text x="68" y="492" class="bs">&#8226; query_tables: loads uploaded CSVs into :memory: SQLite</text>
   <text x="68" y="510" class="bs">  with typed schema inference, single-SELECT/WITH check,</text>
   <text x="68" y="528" class="bs">  PRAGMA query_only=ON, progress interrupt (10k ops)</text>
-  <text x="68" y="550" class="bs">" Temp dir wiped on finish · CSP + X-Content-Type headers</text>
+  <text x="68" y="550" class="bs">&#8226; Temp dir wiped on finish &#183; CSP + X-Content-Type headers</text>
 
   <rect x="562" y="430" width="506" height="64" class="box-warn"/>
   <text x="578" y="452" class="bt">Extended Trusted Local/Batch Tools (ask.py / main.py)</text>
-  <text x="578" y="470" class="bs">run_python (pandas/numpy) · read_excel · read_pdf · grep</text>
-  <text x="578" y="485" class="bs">inspect_db · execute_sql · analyze_image (vision)</text>
+  <text x="578" y="470" class="bs">run_python (pandas/numpy) &#183; read_excel &#183; read_pdf &#183; grep</text>
+  <text x="578" y="485" class="bs">inspect_db &#183; execute_sql &#183; analyze_image (vision)</text>
 
   <rect x="562" y="506" width="506" height="64" class="box"/>
   <text x="578" y="528" class="bt">KDD Column-Set Benchmark Scorer (eval/score.py)</text>
-  <text x="578" y="546" class="bs">4 gold fixtures (CSV · SQLite · Markdown · Excel 2-sheet)</text>
+  <text x="578" y="546" class="bs">4 gold fixtures (CSV &#183; SQLite &#183; Markdown &#183; Excel 2-sheet)</text>
   <text x="578" y="561" class="bs">score = recall - lambda * (extra_cols / predicted_cols)</text>
 
   <!-- Edges -->
