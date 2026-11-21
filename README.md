@@ -51,7 +51,7 @@ The browser displays only high-level tool progress, not chain-of-thought, raw pr
 
 Deep-dive docs:
 - [Architecture & System Design](docs/architecture.md)
-- [Architecture Interview Guide](docs/interview-guide.md)
+- [Engineering FAQ](docs/engineering-faq.md)
 
 ## Deployment
 

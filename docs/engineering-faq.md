@@ -1,4 +1,4 @@
-# Architecture Deep-Dive & Interview Guide
+# Engineering FAQ
 
 This guide prepares technical walkthroughs on Stet's agent loop, sandbox design, SQL CSV ingestion engine, and KDD evaluation framing.
 
