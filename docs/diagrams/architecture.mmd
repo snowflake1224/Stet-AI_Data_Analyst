@@ -1,0 +1,32 @@
+flowchart TB
+    subgraph Public["Public Web Demo (serve.py :8765)"]
+        UI["HTML/JS Single-Page App"]
+        OWNER["Owner Example Quota (cooldown + daily limit)"]
+        BYOK["BYOK Upload Session (<=3 CSV, <=1 MD, RAM key only)"]
+    end
+
+    subgraph Agent["Three-Phase Planner-Executor-Verifier (DataAgent)"]
+        PLAN["Phase 1: Planner (_plan JSON + tree + knowledge.md inject)"]
+        EXEC["Phase 2: ReAct Executor (_trim_history + error hints + forced answer)"]
+        VER["Phase 3: Verifier (_verify prunes unrequested columns)"]
+    end
+
+    subgraph Tools["Sandboxed Public Tools vs Full Local Tools"]
+        SAFE["Public Allowlist: list_context · read_csv · read_doc · search_doc · query_tables (in-mem SQLite) · answer"]
+        FULL["Local CLI/Batch (ask.py / main.py): + run_python · read_excel · read_pdf · inspect_db · execute_sql · analyze_image"]
+    end
+
+    subgraph Eval["Evaluation & Packaging"]
+        EVAL["agent.eval (recall - lambda * extra/predicted over column multisets)"]
+        DOCKER["Docker + Render Blueprint"]
+    end
+
+    UI --> OWNER
+    UI --> BYOK
+    OWNER --> PLAN
+    BYOK --> PLAN
+    PLAN --> EXEC
+    EXEC --> VER
+    EXEC --> SAFE
+    EXEC -. "trusted CLI/KDD mode" .-> FULL
+    VER --> EVAL

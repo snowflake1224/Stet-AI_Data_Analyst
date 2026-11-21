@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" role="img" aria-label="Stet Three-Phase Execution &amp; Safety Guardrails">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#131b35"/>
+    </linearGradient>
+    <marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <style>
+      .t { font: 700 19px 'Inter', 'Segoe UI', system-ui, sans-serif; fill: #f8fafc; }
+      .s { font: 400 12px 'Inter', 'Segoe UI', system-ui, sans-serif; fill: #94a3b8; }
+      .b1 { fill: #192446; stroke: #3b82f6; stroke-width: 1.4; rx: 10; }
+      .b2 { fill: #132d37; stroke: #10b981; stroke-width: 1.5; rx: 10; }
+      .b3 { fill: #251e40; stroke: #a855f7; stroke-width: 1.4; rx: 10; }
+      .card { fill: #11182d; stroke: #25345c; stroke-width: 1.2; rx: 10; }
+      .bt { font: 600 13px 'Inter', 'Segoe UI', system-ui, sans-serif; fill: #f8fafc; }
+      .bs { font: 400 11px 'JetBrains Mono', monospace; fill: #94a3b8; }
+      .e { stroke: #34d399; stroke-width: 1.7; fill: none; marker-end: url(#a2); }
+      .lbl { font: 600 10.5px 'JetBrains Mono', monospace; fill: #cbd5e1; }
+    </style>
+  </defs>
+
+  <rect width="1100" height="500" fill="url(#bg2)"/>
+  <text x="34" y="40" class="t">Planner-Executor-Verifier Loop &amp; Table Scoring Pipeline</text>
+  <text x="34" y="60" class="s">Context trimming guarantees alternating user/assistant messages; in-memory SQLite enforces read-only single statements</text>
+
+  <!-- 3 Phases -->
+  <rect x="34" y="92" width="290" height="128" class="b1"/>
+  <text x="52" y="118" class="bt">Phase 1 &#183; Plan</text>
+  <text x="52" y="140" class="bs">" Walks context tree (sizes + types)</text>
+  <text x="52" y="160" class="bs">" Single temperature=0 call -&gt; JSON plan</text>
+  <text x="52" y="180" class="bs">" Public mode wraps files as untrusted</text>
+  <text x="52" y="200" class="bs">" Injects knowledge.md if &lt;= 8 KB</text>
+
+  <rect x="394" y="92" width="320" height="128" class="b2"/>
+  <text x="412" y="118" class="bt">Phase 2 &#183; Execute ReAct Loop</text>
+  <text x="412" y="140" class="bs">" Parses &lt;think&gt; tags + JSON fences</text>
+  <text x="412" y="160" class="bs">" History trimmer preserves turn pairs</text>
+  <text x="412" y="180" class="bs">" Error-streak hint + two step warnings</text>
+  <text x="412" y="200" class="bs">" Final forced answer call on limit</text>
+
+  <rect x="784" y="92" width="282" height="128" class="b3"/>
+  <text x="802" y="118" class="bt">Phase 3 &#183; Verify &amp; Prune</text>
+  <text x="802" y="140" class="bs">" Audits predicted columns vs question</text>
+  <text x="802" y="160" class="bs">" Drops extra unrequested columns</text>
+  <text x="802" y="180" class="bs">" Prevents KDD extra-column penalty</text>
+  <text x="802" y="200" class="bs">" Refuses to strip table to 0 columns</text>
+
+  <path d="M 324 156 L 394 156" class="e"/>
+  <path d="M 714 156 L 784 156" class="e"/>
+
+  <!-- Bottom detail cards -->
+  <rect x="34" y="264" width="500" height="202" class="card"/>
+  <text x="52" y="292" class="bt">query_tables Sandboxed CSV-to-SQLite Engine</text>
+  <text x="52" y="318" class="bs">1. Infers column types per file: INTEGER -&gt; REAL -&gt; TEXT</text>
+  <text x="52" y="340" class="bs">   (leading-zero strings stay TEXT; blanks become SQL NULL)</text>
+  <text x="52" y="362" class="bs">2. Enforces single statement starting with SELECT or WITH</text>
+  <text x="52" y="384" class="bs">   (multi-statement ; rejected; PRAGMA query_only=ON)</text>
+  <text x="52" y="406" class="bs">3. Installs sqlite3 progress handler (aborts &gt; 10k VM steps)</text>
+  <text x="52" y="428" class="bs">4. Caps 50,000 rows/CSV input and 1,000 rows output</text>
+  <text x="52" y="450" class="bs">5. Normalizes NaN/Inf/numpy scalars to clean JSON cells</text>
+
+  <rect x="564" y="264" width="502" height="202" class="card"/>
+  <text x="582" y="292" class="bt">Column-Multiset Evaluation (agent/eval/score.py)</text>
+  <text x="582" y="318" class="bs">Formula:  score = recall - lambda * (extra / predicted)</text>
+  <text x="582" y="342" class="bs">" Header-agnostic &amp; row-order-agnostic normalization</text>
+  <text x="582" y="364" class="bs">" Numbers normalized to 2 decimal places ("140.00")</text>
+  <text x="582" y="386" class="bs">" Greedy 1-to-1 matching on sorted column multisets</text>
+  <text x="582" y="414" class="bs">Difficulty Budgets:</text>
+  <text x="582" y="434" class="bs">  easy: 14 steps  |  medium: 20  |  hard: 30  |  extreme: 42</text>
+  <text x="582" y="454" class="bs">  serve.py public demo uses easy (14); benchmark medium (20)</text>
+</svg>
